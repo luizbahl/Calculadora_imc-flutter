@@ -12,7 +12,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 245, 240, 225),
         body: SizedBox(
           width: double.infinity,
           child:
@@ -24,16 +24,16 @@ class _HomePageState extends State<HomePage> {
               "lib/images/imc1.png",
             ),
             const SizedBox(
-              height: 170,
+              height: 120,
             ),
             Container(
                 width: double.infinity,
                 margin: const EdgeInsets.symmetric(horizontal: 30),
-                height: 50,
+                height: 80,
                 alignment: Alignment.center,
                 child: const Text("Clique aqui para calcular seu imc",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.w700))),
           ]),
