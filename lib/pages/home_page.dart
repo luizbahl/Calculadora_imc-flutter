@@ -1,3 +1,4 @@
+import 'package:calculadora_imc/pages/calcula_imc.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,15 +28,26 @@ class _HomePageState extends State<HomePage> {
               height: 120,
             ),
             Container(
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                height: 80,
-                alignment: Alignment.center,
-                child: const Text("Clique aqui para calcular seu imc",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700))),
+              width: double.infinity,
+              margin: const EdgeInsets.symmetric(horizontal: 30),
+              height: 80,
+              alignment: Alignment.center,
+              child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CalculaImc()));
+                  },
+                  style: const ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          Color.fromARGB(255, 209, 209, 209))),
+                  child: const Text("Clique aqui para calcular seu IMC",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w900))),
+            )
           ]),
         ),
       ),
