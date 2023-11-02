@@ -9,33 +9,38 @@ class CalculaImc extends StatefulWidget {
 }
 
 class _CalculaImcState extends State<CalculaImc> {
-  var pesoController = TextEditingController(text: "");
-  var alturaController = TextEditingController(text: "");
+  TextEditingController pesoController = TextEditingController();
+  TextEditingController alturaController = TextEditingController();
+  String resultado = "";
+  String grauObesidade = "";
 
-  double peso = 0;
-  double altura = 0;
-  double imc = 0;
+  void calcularIMC() {
+    double peso = double.tryParse(pesoController.text) ?? 0;
+    double altura = double.tryParse(alturaController.text) ?? 0;
 
-  String calcularNivelIMC(double imc) {
-    if (imc < 18.5) {
-      return "Abaixo do Peso";
-    } else if (imc >= 18.5 && imc <= 24.9) {
-      return "Peso Normal";
-    } else if (imc >= 25.0 && imc <= 29.9) {
-      return "Sobrepeso";
-    } else if (imc >= 30.0 && imc <= 34.9) {
-      return "Obesidade Grau I";
-    } else if (imc >= 35.0 && imc <= 39.9) {
-      return "Obesidade Grau II";
-    } else {
-      return "Obesidade Grau III";
-    }
-  }
-
-  void calculadoraIMC() {
-    if (altura > 0 && peso > 0) {
+    if (peso > 0 && altura > 0) {
+      double imc = peso / (altura * altura);
       setState(() {
-        imc = peso / (altura * altura);
+        resultado = "Seu IMC é ${imc.toStringAsFixed(2)}";
+
+        if (imc < 18.5) {
+          grauObesidade = "Abaixo do Peso";
+        } else if (imc >= 18.5 && imc <= 25) {
+          grauObesidade = "Peso Normal";
+        } else if (imc > 25.0 && imc <= 30) {
+          grauObesidade = "Sobrepeso";
+        } else if (imc > 30.0 && imc <= 35) {
+          grauObesidade = "Obesidade Grau I";
+        } else if (imc > 35.0 && imc <= 39.9) {
+          grauObesidade = "Obesidade Grau II";
+        } else {
+          grauObesidade = "Obesidade Grau III";
+        }
+      });
+    } else {
+      setState(() {
+        resultado = "Por favor, insira valores válidos.";
+        grauObesidade = '';
       });
     }
   }
@@ -112,7 +117,7 @@ class _CalculaImcState extends State<CalculaImc> {
                   style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
                           Color.fromARGB(255, 209, 209, 209))),
-                  onPressed: calculadoraIMC,
+                  onPressed: calcularIMC,
                   child: const Text(
                     'Calcular IMC',
                     style: TextStyle(
@@ -123,13 +128,13 @@ class _CalculaImcState extends State<CalculaImc> {
                 ),
                 const SizedBox(height: 60),
                 Text(
-                  'Seu IMC é: ${imc.toStringAsFixed(2)}',
+                  resultado,
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  calcularNivelIMC(imc),
+                  grauObesidade,
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.w700),
                 )
