@@ -117,7 +117,10 @@ class _CalculaImcState extends State<CalculaImc> {
                   style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
                           Color.fromARGB(255, 209, 209, 209))),
-                  onPressed: calcularIMC,
+                  onPressed: () {
+                    calcularIMC();
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
                   child: const Text(
                     'Calcular IMC',
                     style: TextStyle(
