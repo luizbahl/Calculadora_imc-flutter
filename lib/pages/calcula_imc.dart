@@ -59,14 +59,14 @@ class _CalculaImcState extends State<CalculaImc> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 100,
+                  height: 80,
                 ),
                 TextField(
                   style: GoogleFonts.amita(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                   ),
-                  controller: pesoController, // arrumar adicionar variável
+                  controller: pesoController,
                   onChanged: (value) {},
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(bottom: 2, top: 13),
@@ -86,14 +86,14 @@ class _CalculaImcState extends State<CalculaImc> {
                       )),
                 ),
                 const SizedBox(
-                  height: 80,
+                  height: 60,
                 ),
                 TextField(
                   style: GoogleFonts.amita(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                   ),
-                  controller: alturaController, // arrumar adicionar variável
+                  controller: alturaController,
                   onChanged: (value) {},
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(bottom: 2, top: 13),
@@ -112,7 +112,7 @@ class _CalculaImcState extends State<CalculaImc> {
                         size: 40,
                       )),
                 ),
-                const SizedBox(height: 80),
+                const SizedBox(height: 60),
                 TextButton(
                   style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
@@ -129,7 +129,7 @@ class _CalculaImcState extends State<CalculaImc> {
                         fontWeight: FontWeight.w600),
                   ),
                 ),
-                const SizedBox(height: 60),
+                const SizedBox(height: 50),
                 Text(
                   resultado,
                   style: const TextStyle(
@@ -140,7 +140,13 @@ class _CalculaImcState extends State<CalculaImc> {
                   grauObesidade,
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.w700),
-                )
+                ),
+                const SizedBox(height: 50),
+                Text("$resultado  $grauObesidade"),
+                Text("$resultado  $grauObesidade"),
+                Text("$resultado  $grauObesidade"),
+                Text("$resultado  $grauObesidade"),
+                Text("$resultado  $grauObesidade"),
               ],
             ),
           ),
